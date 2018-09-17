@@ -38,7 +38,7 @@ class Movies extends Component {
         })
     };
     findMovie = () =>{
-        fetch(`http://www.omdbapi.com/?t=${this.state.text}&apikey=421967b0`)
+        fetch(`https://www.omdbapi.com/?t=${this.state.text}&apikey=421967b0`)
             .then(r => r.json())
             .then(data => {
                 this.setState({
@@ -65,7 +65,7 @@ class Movies extends Component {
             arr : [],
         })
         for(let i = dataY-10; i < dataY+10; i++){
-            fetch(`http://www.omdbapi.com/?t=${this.state.text}+&y=${i}&apikey=421967b0`)
+            fetch(`https://www.omdbapi.com/?t=${this.state.text}+&y=${i}&apikey=421967b0`)
 
                 .then(r => r.json())
                 .then(data => {
