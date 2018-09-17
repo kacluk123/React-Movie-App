@@ -18,6 +18,7 @@ class CommentSection extends React.Component{
         })
     }
     componentDidUpdate(){
+
         if (this.lastTitle !== this.props.data.Title){
             this.lastTitle = this.props.data.Title
             this.setState({
@@ -99,7 +100,7 @@ class CommentSection extends React.Component{
                     <h2>{this.state.message}</h2>
                     <div className="allComments">
                         <span>Comments: ({this.state.commentsList.length})</span>
-                        <ul> {newList} </ul>
+                        <ul> {newList.reverse()} </ul>
                     </div>
                 </div>
             </div>} else {

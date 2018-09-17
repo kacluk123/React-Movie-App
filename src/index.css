@@ -269,7 +269,12 @@ body {
     max-width: 100%;
     margin-bottom: 5px;
   }
-
+  .form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
   .userInput{
     height: 40px;
     margin-top: 5px;

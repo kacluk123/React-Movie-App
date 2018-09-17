@@ -10,7 +10,8 @@ class Search extends React.Component{
         }
 
     }
-    findMovie = () =>{
+    findMovie = (e) =>{
+        e.preventDefault()
         if (typeof this.props.movieFind === 'function'){
 
             this.props.movieFind();
@@ -25,9 +26,11 @@ class Search extends React.Component{
 
     render(){
         return <div className="searchDiv">
+            <form onSubmit={this.findMovie} className='form'>
             <input className="searchInput" value={this.props.text} onChange={this.handleNameChange} type="text" placeholder="Type a movie title"/>
 
-            <button onClick={this.findMovie} className="searchButton">Search<i className="fas fa-film"></i></button>
+            <button className="searchButton">Search<i className="fas fa-film"></i></button>
+            </form>
         </div>
 
     }

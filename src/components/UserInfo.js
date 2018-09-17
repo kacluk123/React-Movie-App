@@ -7,21 +7,30 @@ class UserInfo extends React.Component{
         super(props)
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            text : '',
         };
     }
+    error(error){
+        if (error.message){
+            this.setState({
+                text : error.message,
+            })
+        }
+    }
+
     signup = () =>{
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
         }).then((u)=>{console.log(u)})
             .catch((error) => {
-                console.log(error);
+                this.error(error)
             })
     }
 
     login = () => {
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
         }).catch((error) => {
-            console.log(error);
+            this.error(error)
         });
     }
     email = (event) =>{
@@ -37,12 +46,23 @@ class UserInfo extends React.Component{
 
 
     render(){
-        return <div className="userDiv">
-            <input placeholder="E-mail"className="userInput" value={this.state.email} onChange={this.email} type="text"/>
-            <input className="userInput" placeholder="Password" value={this.state.password} onChange={this.password} type="password"/>
-            <button className="searchButton" onClick={this.login}>Login</button>
-            <button className="searchButton" onClick={this.signup}>Register</button>
-        </div>
+       if (this.state.text !== ''){
+           return <div className="userDiv">
+
+               <input placeholder="E-mail"className="userInput" value={this.state.email} onChange={this.email} type="text"/>
+               <h4 style={{color: 'red'}}>{this.state.text}</h4>
+               <input className="userInput" placeholder="Password" value={this.state.password} onChange={this.password} type="password"/>
+               <button className="searchButton" onClick={this.login}>Login</button>
+               <button className="searchButton" onClick={this.signup}>Register</button>
+           </div>
+       } else {
+           return <div className="userDiv">
+               <input placeholder="E-mail"className="userInput" value={this.state.email} onChange={this.email} type="text"/>
+               <input className="userInput" placeholder="Password" value={this.state.password} onChange={this.password} type="password"/>
+               <button className="searchButton" onClick={this.login}>Login</button>
+               <button className="searchButton" onClick={this.signup}>Register</button>
+           </div>
+       }
     }
 }
 export default UserInfo;
