@@ -38,10 +38,7 @@ class Movies extends Component {
         })
     };
     findMovie = () =>{
-        this.setState({
-            data: '',
-        })
-        fetch(`https://www.omdbapi.com/?t=${this.state.text}&apikey=421967b0`)
+        fetch(`https://www.omdbapi.com/?t=${this.state.text.replace(/[^a-z0-9+]+/gi, '+')}&apikey=421967b0`)
             .then(r => r.json())
             .then(data => {
                 this.setState({
