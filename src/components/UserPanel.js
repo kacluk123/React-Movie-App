@@ -11,7 +11,6 @@ class UserPanel extends React.Component{
     }
 
     render() {
-        console.log(this.props.user)
         return (
             <div style={{display: 'flex', justifyContent: 'flex-end'}}>
                 <h3>Logged as {this.props.user.email} </h3>

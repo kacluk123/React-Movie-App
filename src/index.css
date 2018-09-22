@@ -251,8 +251,32 @@ body {
   width: 25%;
 }
 
+/*Example Movies*/
+
+.slick-dots li button::before{
+  font-size: 20px;
+
+}
+.carItem{
+  max-width: 100%;
+  height: auto;
+  padding: 10px;
 
 
+}
+.carContainer{
+  margin: 0 40px;
+}
+.carDiv{
+  margin: 0 -40px;
+}
+.marginList{
+  padding-top: 80px;
+}
+.other{
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 400;
+}
 /*RWD*/
 
 
@@ -261,7 +285,6 @@ body {
     width: 100%;
 
   }
-
 
 }
 @media(max-width: 720px){
