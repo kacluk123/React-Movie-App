@@ -280,11 +280,18 @@ body {
 
   }
 
+
 }
 @media(max-width: 720px){
   .searchInput {
     max-width: 100%;
     margin-bottom: 5px;
+  }
+  .carContainer{
+    margin: 0 0px;
+  }
+  .carDiv{
+    margin: 0 0px;
   }
   .form{
     width: 100%;
