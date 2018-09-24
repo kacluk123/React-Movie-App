@@ -88,7 +88,7 @@ body {
 
 
 }
-.movieList img{
+.poster{
   max-width: 100%;
   border: 7px solid transparent;
 }
@@ -96,7 +96,7 @@ body {
  padding: 10px;
   cursor: pointer;
 }
-.movieList img:hover{
+.poster:hover{
 
 
   border-radius: 5px;
@@ -257,13 +257,7 @@ body {
   font-size: 20px;
 
 }
-.carItem{
-  max-width: 100%;
-  height: auto;
-  padding: 10px;
 
-
-}
 .carContainer{
   margin: 0 40px;
 }

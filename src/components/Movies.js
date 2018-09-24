@@ -81,6 +81,21 @@ class Movies extends Component {
                 console.log(pos)
             });
     }
+    exampleMovie = (Title) => {
+        fetch(`https://www.omdbapi.com/?t=${Title}&apikey=421967b0`)
+                .then(r => r.json())
+                .then(data => {
+                    this.setState({
+                        data : data,
+
+
+                    })
+
+                    this.findMovieSibling()
+
+                });
+
+    }
     otherMovie = (otherMovie) =>{
 
         this.setState({
@@ -122,7 +137,7 @@ class Movies extends Component {
             return <div className="container">
                 <UserPanel user={this.state.user}/>
                 <Search valChange={this.textChange} movieFind={this.findMovie} movieSiblings={this.findMovieSibling}/>
-                <ExampleMovies data={this.state.data}/>
+                <ExampleMovies data={this.state.data} movieChange={this.exampleMovie}/>
                 <MovieInfo data={this.state.data} movieChange={this.otherMovie} dataSibling={this.state.arr}/>
                 <CommentSection data={this.state.data} user = {this.state.user}/>
             </div>
@@ -130,7 +145,7 @@ class Movies extends Component {
             return <div className="container">
                 <UserInfo/>
                 <Search valChange={this.textChange} movieFind={this.findMovie}/>
-                <ExampleMovies data={this.state.data}/>
+                <ExampleMovies data={this.state.data} movieChange={this.exampleMovie}/>
                 <MovieInfo movieChange={this.otherMovie} data={this.state.data} dataSibling={this.state.arr}/>
                 <CommentSection user = {this.state.user} data={this.state.data}/>
             </div>
@@ -140,8 +155,16 @@ class Movies extends Component {
 
 }   class CarouselItem extends React.Component{
 
+    randomMovie = (Title) =>{
+        if (typeof this.props.movieChange === 'function'){
+
+            this.props.movieChange(Title);
+
+        }
+    }
+
     render(){
-        return  <div className='carDiv'><img class="carItem" src={this.props.item} alt=""/></div>
+        return  <div className='carDiv'><img class="carItem poster" onClick={e => this.randomMovie( this.props.name )} src={this.props.item} alt=""/></div>
     }
 }
 
@@ -150,6 +173,13 @@ class Movies extends Component {
             super(props)
             this.state={
                 otherList : [],
+            }
+        }
+        movieChange = (Title) =>{
+            if (typeof this.props.movieChange === 'function'){
+
+                this.props.movieChange(Title);
+
             }
         }
         componentDidMount(){
@@ -210,8 +240,8 @@ class Movies extends Component {
             return <div className='carContainer marginList'>
                 <h1 className='other'>Other users searched for:</h1>
                 <Slider {...settings}>
-                    {list.map(function (el, i) {
-                        return <CarouselItem item={el.poster}></CarouselItem>
+                    {list.map( (el, i) => {
+                        return <CarouselItem name={el.title}item={el.poster} movieChange={this.movieChange}></CarouselItem>
                     })}
                 </Slider>
             </div>

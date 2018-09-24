@@ -43,10 +43,10 @@ class MovieInfo extends React.Component{
 
         const newMovie =  slicedArray.map((el, i) => {
             if (el.Poster !== "N/A"){
-                return <li key={i} onClick={e => this.otherMovie( el )}   className="col3-3"><img src={el.Poster} alt=""/><span className="otherMovies">{el.Title}</span></li>
+                return <li key={i} onClick={e => this.otherMovie( el )}   className="col3-3"><img className='poster' src={el.Poster} alt=""/><span className="otherMovies">{el.Title}</span></li>
 
             } else {
-                return <li key={i} onClick={e => this.otherMovie( el )} className="col3-3"><img src='https://jessica-chastain.com/news/wp-content/uploads/2016/07/noposter.jpg' alt=""/><span className="otherMovies">{el.Title}</span></li>
+                return <li key={i} onClick={e => this.otherMovie( el )} className="col3-3"><img className='poster' src='https://jessica-chastain.com/news/wp-content/uploads/2016/07/noposter.jpg' alt=""/><span className="otherMovies">{el.Title}</span></li>
 
             }
         })
