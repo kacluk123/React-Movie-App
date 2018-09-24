@@ -60,7 +60,7 @@ class Movies extends Component {
 
 
                 })
-
+                window.scrollTo(0, 0)
                 this.findMovieSibling()
 
                 const itemsRef = firebase.database().ref('Titles');
@@ -96,7 +96,7 @@ class Movies extends Component {
 
     }
     otherMovie = (otherMovie) =>{
-
+        window.scrollTo(0, 0)
         this.setState({
             data : otherMovie,
 
