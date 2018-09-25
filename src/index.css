@@ -282,6 +282,14 @@ body {
 
 
 }
+@media(max-width: 480px){
+  .carDiv{
+    display: flex;
+    justify-content: center;
+  }
+
+
+}
 @media(max-width: 720px){
   .searchInput {
     max-width: 100%;

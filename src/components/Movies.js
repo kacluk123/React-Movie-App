@@ -64,20 +64,28 @@ class Movies extends Component {
                 this.findMovieSibling()
 
                 const itemsRef = firebase.database().ref('Titles');
-                let poster = this.state.data.Poster
-                let title = this.state.data.Title.replace(/[^a-z0-9+]+/gi, '+')
-                const arr = this.state.otherTitles;
+                if (this.state.data.Response !== "False"){
+                    let poster = this.state.data.Poster
+                    let title = this.state.data.Title
+                    const arr = this.state.otherTitles;
+                    let movieTitle = {
+                        title: title,
+                        poster : poster,
+                    }
+                    const pos = arr.map(function(e) { return e.title; });
+                    if (pos.indexOf(title) === -1){
+                        itemsRef.push(movieTitle)
+                    }
 
-                let movieTitle = {
-                    title: title,
-                    poster : poster,
-                }
-                const pos = arr.map(function(e) { return e.title; });
-                if (pos.indexOf(title) === -1){
-                    itemsRef.push(movieTitle)
+                    console.log(pos)
+
+
+
+
                 }
 
-                console.log(pos)
+
+
             });
     }
     exampleMovie = (Title) => {
@@ -110,7 +118,7 @@ class Movies extends Component {
             arr : [],
         })
         for(let i = dataY-10; i < dataY+10; i++){
-            fetch(`https://www.omdbapi.com/?t=${this.state.text}+&y=${i}&apikey=421967b0`)
+            fetch(`https://www.omdbapi.com/?t=${this.state.text.replace(/[^a-z0-9+]+/gi, '+')}+&y=${i}&apikey=421967b0`)
 
                 .then(r => r.json())
                 .then(data => {

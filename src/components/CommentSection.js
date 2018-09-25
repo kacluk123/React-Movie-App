@@ -24,7 +24,7 @@ class CommentSection extends React.Component{
             this.setState({
                 commentsList: [{title:'wczytywanie'}]
             })
-            const itemsRef = firebase.database().ref(this.props.data.Title.replace(/[^a-z0-9+]+/gi, '+'));
+            const itemsRef = firebase.database().ref(this.props.data.Title);
 
             itemsRef.on('value', (snapshot) => {
                 let items = snapshot.val();
@@ -42,7 +42,6 @@ class CommentSection extends React.Component{
 
     sendComment =()=>{
         const itemsRef = firebase.database().ref(this.props.data.Title.replace(/[^a-z0-9+]+/gi, '+'));
-        console.log(this.props.data.Title.replace(/[^a-z0-9+]+/gi, '+'))
         this.setState({
             comments: '',
 
