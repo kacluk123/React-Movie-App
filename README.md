@@ -6,7 +6,8 @@ Changelog:
 (26.09.2018)
 - Fixed crashing aplication bugs in search component
 - Added 'home' button that allowes you to go to the main site of app.
-(24.09.2018):
+
+(24.09.2018)
 - Now you can see what movies users searched for!
 
 
