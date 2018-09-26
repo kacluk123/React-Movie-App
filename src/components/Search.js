@@ -21,7 +21,17 @@ class Search extends React.Component{
 
 
     }
+    DataReset = () =>{
 
+        if (typeof this.props.dataReset === 'function'){
+
+            this.props.dataReset();
+
+        }
+
+
+
+    }
 
 
     render(){
@@ -30,7 +40,10 @@ class Search extends React.Component{
             <input className="searchInput" value={this.props.text} onChange={this.handleNameChange} type="text" placeholder="Type a movie title"/>
 
             <button className="searchButton">Search<i className="fas fa-film"></i></button>
+
+
             </form>
+            <button className="searchButton searchPad" onClick={this.DataReset}>Home</button>
         </div>
 
     }

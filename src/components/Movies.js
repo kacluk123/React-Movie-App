@@ -39,7 +39,7 @@ class Movies extends Component {
 
     textChange =(event)=>{
         this.setState({
-            text: event,
+            text: event.replace(/[^a-z0-9+]+/gi, '+'),
         })
     };
     items(){
@@ -51,7 +51,13 @@ class Movies extends Component {
             })
         });
     }
+    DataReset = () =>{
+        this.setState({
+            data : '',
+        })
+    }
     findMovie = () =>{
+
         fetch(`https://www.omdbapi.com/?t=${this.state.text.replace(/[^a-z0-9+]+/gi, '+')}&apikey=421967b0`)
             .then(r => r.json())
             .then(data => {
@@ -118,7 +124,7 @@ class Movies extends Component {
             arr : [],
         })
         for(let i = dataY-10; i < dataY+10; i++){
-            fetch(`https://www.omdbapi.com/?t=${this.state.text.replace(/[^a-z0-9+]+/gi, '+')}+&y=${i}&apikey=421967b0`)
+            fetch(`https://www.omdbapi.com/?t=${this.state.data.Title}+&y=${i}&apikey=421967b0`)
 
                 .then(r => r.json())
                 .then(data => {
@@ -143,7 +149,7 @@ class Movies extends Component {
         if (this.state.user !== null){
             return <div className="container">
                 <UserPanel user={this.state.user}/>
-                <Search valChange={this.textChange} movieFind={this.findMovie} movieSiblings={this.findMovieSibling}/>
+                <Search valChange={this.textChange} dataReset={this.DataReset} movieFind={this.findMovie} movieSiblings={this.findMovieSibling}/>
                 <ExampleMovies data={this.state.data} movieChange={this.exampleMovie}/>
                 <MovieInfo data={this.state.data} movieChange={this.otherMovie} dataSibling={this.state.arr}/>
                 <CommentSection data={this.state.data} user = {this.state.user}/>
@@ -151,7 +157,7 @@ class Movies extends Component {
         } else {
             return <div className="container">
                 <UserInfo/>
-                <Search valChange={this.textChange} movieFind={this.findMovie}/>
+                <Search valChange={this.textChange} movieFind={this.findMovie} dataReset={this.DataReset}/>
                 <ExampleMovies data={this.state.data} movieChange={this.exampleMovie}/>
                 <MovieInfo movieChange={this.otherMovie} data={this.state.data} dataSibling={this.state.arr}/>
                 <CommentSection user = {this.state.user} data={this.state.data}/>

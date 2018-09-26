@@ -21,18 +21,19 @@ class CommentSection extends React.Component{
 
         if (this.lastTitle !== this.props.data.Title){
             this.lastTitle = this.props.data.Title
-            this.setState({
-                commentsList: [{title:'wczytywanie'}]
-            })
-            const itemsRef = firebase.database().ref(this.props.data.Title);
 
-            itemsRef.on('value', (snapshot) => {
-                let items = snapshot.val();
-                this.setState({
-                    commentsList : items ? Object.values(items):[],
-                })
+               if (this.lastTitle !== undefined){
+                   const itemsRef = firebase.database().ref(this.props.data.Title.replace(/[^a-z0-9+]+/gi, '+'));
 
-            })
+                   itemsRef.on('value', (snapshot) => {
+                       let items = snapshot.val();
+                       this.setState({
+                           commentsList : items ? Object.values(items):[],
+                       })
+
+                   })
+               }
+
 
 
         }

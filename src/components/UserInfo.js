@@ -48,20 +48,28 @@ class UserInfo extends React.Component{
     render(){
        if (this.state.text !== ''){
            return <div className="userDiv">
-
+               <div className="userDiv">
                <input placeholder="E-mail"className="userInput" value={this.state.email} onChange={this.email} type="text"/>
                <h4 style={{color: 'red'}}>{this.state.text}</h4>
                <input className="userInput" placeholder="Password" value={this.state.password} onChange={this.password} type="password"/>
+               </div>
+                   <div className="userDiv">
                <button className="searchButton" onClick={this.login}>Login</button>
                <button className="searchButton" onClick={this.signup}>Register</button>
+               </div>
            </div>
        } else {
            return <div className="userDiv">
+               <div className="userDiv">
                <input placeholder="E-mail"className="userInput" value={this.state.email} onChange={this.email} type="text"/>
                <input className="userInput" placeholder="Password" value={this.state.password} onChange={this.password} type="password"/>
+               </div>
+               <div className="userDiv">
                <button className="searchButton" onClick={this.login}>Login</button>
                <button className="searchButton" onClick={this.signup}>Register</button>
-           </div>
+               </div>
+               </div>
+
        }
     }
 }

@@ -161,6 +161,7 @@ body {
 
 
 
+
 /*CommentSection*/
 
 
@@ -274,15 +275,33 @@ body {
 /*RWD*/
 
 
-@media(max-width: 1060px){
-  .col1-2, .col2-2{
+@media(max-width: 1060px) {
+  .col1-2, .col2-2 {
     width: 100%;
 
+  }
+}
+  @media(max-width: 936px){
+    .searchDiv {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: auto;
+
+    }
+
+}
+@media(max-width: 480px){
+  .carDiv{
+    display: flex;
+    justify-content: center;
   }
 
 
 }
-@media(max-width: 480px){
+
+@media(max-width: 390px){
   .carDiv{
     display: flex;
     justify-content: center;
@@ -327,15 +346,19 @@ body {
   .col1-2{
     width: 100%;
   }
-  .searchDiv {
+
+
+  .searchDiv button {
+    margin: 5px;
+    max-width: 40%;
+
+  }
+  .searchDiv form {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: auto;
-
   }
-
-
   .scoreName, .row, .movieList {
     flex-direction: column;
     justify-content: center;
@@ -343,6 +366,9 @@ body {
   }
   .userDiv {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
   }
   .userDiv button {
     margin-top: 5px;
