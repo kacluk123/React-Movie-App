@@ -3,13 +3,9 @@ import React, { Component}  from 'react';
 import App from "../App";
 
 class UserPanel extends React.Component{
-
-
-
     logout = () => {
         firebase.auth().signOut();
     }
-
     render() {
         return (
             <div style={{display: 'flex', justifyContent: 'flex-end'}}>
@@ -17,7 +13,6 @@ class UserPanel extends React.Component{
                 <button className="searchButton" onClick={this.logout}>Logout</button>
             </div>
         );
-
     }
 }
 
