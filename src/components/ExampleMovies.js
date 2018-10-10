@@ -17,7 +17,6 @@ class ExampleMovies extends React.Component{
 
         }
     }
-
     componentDidMount(){
         this.setState({
             otherList: [{title:'wczytywanie'}]
@@ -32,8 +31,6 @@ class ExampleMovies extends React.Component{
 
         })
     }
-
-
     render() {
         console.log(this.state.otherList);
         const list = this.state.otherList;
@@ -46,10 +43,7 @@ class ExampleMovies extends React.Component{
             }
         }
         shuffleArray(list)
-
         const slicedArray = list.slice(0,5)
-
-
         const settings = {
             dots: true,
             infinite: true,
@@ -83,8 +77,6 @@ class ExampleMovies extends React.Component{
                 }
             ]
         };
-
-
         if (this.props.data === ''){
             return <div className='carContainer marginList'>
                 <h1 className='other'>Other users searched for:</h1>
