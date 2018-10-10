@@ -33,13 +33,8 @@ class CommentSection extends React.Component{
 
                    })
                }
-
-
-
+            }
         }
-
-
-    }
 
     sendComment =()=>{
         const itemsRef = firebase.database().ref(this.props.data.Title.replace(/[^a-z0-9+]+/gi, '+'));
@@ -62,8 +57,6 @@ class CommentSection extends React.Component{
                 message : '',
             })
         }
-
-
     }
 
     render(){
@@ -87,12 +80,9 @@ class CommentSection extends React.Component{
             return null;
 
         }
-
-
         if(this.props.data !== ''){
             return <div>
-
-                <div className='container commentSection'><textarea style={{display: display}} value={this.state.comments} onChange={this.addComment} placeholder="Type a comment here" className='commentText'/>
+                    <div className='container commentSection'><textarea style={{display: display}} value={this.state.comments} onChange={this.addComment} placeholder="Type a comment here" className='commentText'/>
                     <button className="searchButton" onClick={this.sendComment} style={{display: display}}>Add comment</button>
                     <h3>{message}</h3>
                 </div>
@@ -106,9 +96,6 @@ class CommentSection extends React.Component{
             </div>} else {
             return null;
         }
-
-
-
     }
 }
 export default CommentSection;
