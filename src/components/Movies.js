@@ -16,8 +16,6 @@ class Movies extends Component {
             dataSibling: '',
             arr: [],
             otherTitles: [],
-
-
         }
     }
     authListener =()=> {
@@ -63,9 +61,7 @@ class Movies extends Component {
             .then(data => {
                 this.setState({
                     data : data,
-
-
-                })
+                 })
                 window.scrollTo(0, 0)
                 this.findMovieSibling()
 
@@ -82,17 +78,8 @@ class Movies extends Component {
                     if (pos.indexOf(title) === -1){
                         itemsRef.push(movieTitle)
                     }
-
-                    console.log(pos)
-
-
-
-
-                }
-
-
-
-            });
+                    }
+                });
     }
     exampleMovie = (Title) => {
         fetch(`https://www.omdbapi.com/?t=${Title}&apikey=421967b0`)
@@ -100,14 +87,8 @@ class Movies extends Component {
                 .then(data => {
                     this.setState({
                         data : data,
-
-
                     })
-
-
-
                 });
-
     }
     otherMovie = (otherMovie) =>{
         window.scrollTo(0, 0)
@@ -115,8 +96,6 @@ class Movies extends Component {
             data : otherMovie,
 
         })
-
-
     }
     findMovieSibling = () =>{
         const dataY = Number(this.state.data.Year);
@@ -139,11 +118,7 @@ class Movies extends Component {
         }
 
     }
-
-
-
-
-    render() {
+        render() {
 
 
         if (this.state.user !== null){
